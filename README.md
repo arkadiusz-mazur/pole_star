@@ -31,3 +31,9 @@ http://127.0.0.1:8000/api/positions.json?imo=9632179
 ## Data
 IMO numbers to use:
 9632179, 9247455, 9595321
+
+# Tests
+```bash
+cd pytests
+pytest tests.py
+```
