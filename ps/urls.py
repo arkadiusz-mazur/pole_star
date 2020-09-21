@@ -3,8 +3,8 @@ from rest_framework import routers
 from ps.positions import views
 
 router = routers.DefaultRouter()
-router.register(r'ships', views.ShipViewSet)
-router.register(r'positions', views.PositionViewSet)
+router.register(r'api/ships', views.ShipViewSet)
+router.register(r'api/positions', views.PositionViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

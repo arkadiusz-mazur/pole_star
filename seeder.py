@@ -79,5 +79,5 @@ importer = Importer()
 importer.create_ships()
 importer.create_positions()
 
-run = "python manage.py runserver"
-os.system(run)
+# run = "python manage.py runserver 0.0.0.0:8000"
+# os.system(run)
