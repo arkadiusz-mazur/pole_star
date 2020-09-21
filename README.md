@@ -7,7 +7,9 @@ No authentication is needed to be able to acces API.
 # Author
 
 Arkadiusz Mazur
+
 arkadiusz.mazur@hotmail.com
+
 programmer.rails@gmail.com
 
 
@@ -19,13 +21,17 @@ docker-compose up
 
 ## Usage
 Main link:
+
 http://localhost:8000/
 
 Other example links:
+
 http://127.0.0.1:8000/api/positions/
+
 http://127.0.0.1:8000/api/ships/
 
 JSON format example:
+
 http://127.0.0.1:8000/api/positions.json?imo=9632179
 
 ## Data
