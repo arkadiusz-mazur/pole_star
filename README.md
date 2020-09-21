@@ -2,6 +2,8 @@
 
 Description of task you can find in pdf file in the same folder.
 
+No authentication is needed to be able to acces API.
+
 # Author
 
 Arkadiusz Mazur
