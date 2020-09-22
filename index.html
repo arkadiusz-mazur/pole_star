@@ -45,33 +45,31 @@
         }).done(function(ships_data) {
           // Got the current Ships in database. Now get the Positions list for
           // each one of the ships.
-          //console.log(ships_data.results[0].imo)
           for (i = 0; i < ships_data.results.length; i++) {
-             //console.log(ships_data.results[i].imo)
-             // currentShip = ships_data.results[i].imo
-            (function (currentShip) {
+            (function () {
+              currentShip = ships_data.results[i]
               $.ajax({
-<!--                url: 'http://localhost:8000/api/positions.json&imo=' + currentShip.imo,-->
-                url: 'http://localhost:8000/api/positions.json?imo=' + ships_data.results[i].imo,
+                url: 'http://localhost:8000/api/positions.json?imo=' + currentShip.imo,
                 dataType: 'json'
               }).done(function(positions_data) {
                 // Add current position marker (1st position in the list).
-                var latest = positions_data[0];
+                var latest = positions_data.results[0];
                 //console.log(positions_data)
-                var marker = L.marker([latest.latitude, latest.longitude]).addTo(map);        
+                var marker = L.marker([latest.lat, latest.lon]).addTo(map);
                 marker.bindPopup('<b>' + currentShip.name + '</b><br/>IMO: ' + currentShip.imo).openPopup();
-
                 // Next positions are the trail.
-                for (p = 1; p < positions_data.length; p++) {
-                  position = positions_data[p];
+                for (p = 1; p < positions_data.count; p++) {
+                  position = positions_data.results[p];
                   console.log(position)
 
-                  var circle = L.circle([position.latitude, position.longitude], {
-                    color: 'red',
-                    fillColor: '#f03',
-                    fillOpacity: 0.5,
-                    radius: 300 
-                  }).addTo(map);
+                  if(typeof position !== "undefined") {
+                    var circle = L.circle([position.lat, position.lon], {
+                      color: 'red',
+                      fillColor: '#f03',
+                      fillOpacity: 0.5,
+                      radius: 300
+                    }).addTo(map);
+                  }
                 }   
               }); 
             })(ships_data[i]);
